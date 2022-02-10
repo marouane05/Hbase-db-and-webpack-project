@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    
+    <link rel="stylesheet" href="https://neo4j-documentation.github.io/developer-resources/language-guides/assets/css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Neo4j mini projet</title>
+</head>
+
+<body>
+
+<div role="navigation" class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div class="row">
+         <!--   <div class="col-sm-6 col-md-6">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <form role="search" class="navbar-form" id="searchHbase">
+                            <div class="form-group">
+                                <input type="text" value="" placeholder="Chercher un étudiant" class="form-control" name="search">
+                            </div>
+                            <button class="btn btn-default" type="submit">Chercher</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+     
+        -->
+            <div class="navbar-header col-sm-6 col-md-6">
+                
+                <div class="navbar-brand">
+                    <div class="brand">Hbase- Mini projet master Big data and cloud</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">Liste des étudiants</div>
+            <table id="results" class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>Nom étudiant</th>
+                    <th>Filière</th>
+                    <th>Ajouter des notes</th>
+                    <th>Supprimer</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading" id="title">Les notes de cet étudiant</div>
+            <div class="row">
+            
+                <div class="col-md-8 col-sm-8">
+                    
+                    <table id="resultsNotes" class="table table-striped table-hover ">
+                        <thead>
+                        <tr>
+                            <th>Module</th>
+                            <th>Note</th>
+                         
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+           
+            </div>
+           
+        </div>
+
+        <div class="panel panel-default ">
+            <div class="panel-heading" id="title">Ajouter Etudiant</div>
+            <div class="row justify-content-center">
+               
+                <div class="col-md-8 col-sm-8">
+                    <br>
+                    <form  id="ajouterEt" >
+                        <div class="form-group " >
+                            <label for="nom">Nom complet</label>
+                            <input type="text" class="form-control" name="nom"/>
+                        </div>    
+                        <div class="form-group">
+                            <label for="fil">filière</label>
+                            <input type="text" class="form-control" name="fil"/>
+                        </div> 
+                        
+                        <input type="submit" class="btn btn-secondary" value="Ajouter"/>
+                    </form>
+                  <br>
+                </div>
+            </div>
+          
+        </div>
+
+
+    </div>
+</div>
+
+<br>
+
+
+          
+                <!-- Modal -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Ajouter note</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+               
+                <div class="col-md-8 ">
+                    <br>
+
+                    <form  id="ajouterNoteM">
+                        <div class="form-group" >
+                            <label for="module">module</label>
+                            <input type="text" class="form-control" name="module"/>
+                        </div>    
+                        <div class="form-group">
+                            <label for="note">Note</label>
+                            <input type="text" class="form-control" name="note"/>
+                        </div> 
+                        <div class="form-group">
+                            <label for="studentId">Key</label>
+                            <input type="text" name="studentId" class="form-control" id="studentId" value=""/>
+                    </div> 
+                    <input type="submit" class="btn btn-secondary"  value="Ajouter"/>
+                    </form>
+
+                </div>
+        </div>
+  <!---   <div class="modal-footer"> -->
+     <!--        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>  --> 
+    <!--    <input type="submit" class="btn btn-secondary"  value="Ajouter"/> -->
+        </div>
+    
+    </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="neo4j-web.min.js"></script>
+</body>
+</html>
